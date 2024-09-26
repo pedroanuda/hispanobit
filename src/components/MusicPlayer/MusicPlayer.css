@@ -22,15 +22,65 @@
     line-height: 15px;
 }
 
+/* Cover Styling */
+div:has(>img.album-pic) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    --image-border-radius: 40px;
+    --image-margin-top: 24px;
+    --image-margin-bottom: 39px;
+}
+
 img.album-pic {
-    width: 300px;
-    border-radius: 40px;
+    width: 100%;
+    border-radius: var(--image-border-radius);
     box-shadow: 0px 0px 14px 1px #00000080;
-    margin-top: 24px;
-    margin-bottom: 25px;
+    margin-top: var(--image-margin-top);
+    margin-bottom: var(--image-margin-bottom);
     user-select: none;
 }
 
+div.loading_cover {
+    top: var(--image-margin-top);
+    width: 100%;
+    bottom: var(--image-margin-bottom);
+
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: var(--image-border-radius);
+}
+
+div.loading_cover.visible {
+    display: flex;
+}
+
+.loading_spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Control Panel Styling */
 .control-panel {
     display: flex;
     flex-direction: column;
@@ -38,12 +88,59 @@ img.album-pic {
 }
 
 .control-panel > span.song-name {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .control-panel > span.song-artist {
     line-height: 15px;
+}
+
+@media (pointer: coarse) {
+    .control-panel > .slider {
+        padding: .75rem 0 !important;
+    }
+}
+
+.control-panel > .time-feedback {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.control-panel > .buttons {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.buttons > button {
+    width: 65px;
+    height: 65px;
+    padding: 0;
+    border: none;
+    background: none;
+    transition: opacity .1s ease;
+}
+
+.buttons > button:active {
+    opacity: .5;
+}
+
+.buttons > button:disabled {
+    opacity: .5;
+}
+
+.buttons > button:is(#previous-button, #next-button) {
+    width: calc(0.6 * 65px);
+    height: calc(0.6 * 65px);
+}
+
+.buttons img {
+    height: 100%;
 }
 
 /* Drawer Styling */
@@ -70,5 +167,6 @@ img.album-pic {
 
 .drawer__content {
     height: 100%;
+    max-height: none !important;
     padding: 0 30px !important;
 }
