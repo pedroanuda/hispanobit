@@ -1,0 +1,16 @@
+.mainNav {
+    --sidebar-size: 250px;
+
+    border-radius: 20px;
+    background-color: #F5F5F5;
+    width: calc(100vw - var(--sidebar-size));
+    height: 85vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-left: var(--sidebar-size);
+}
+
+.titulo_cat {
+    margin-bottom: .25rem;
+    font-family: 'PixelifySans';
+}

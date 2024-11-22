@@ -1,0 +1,27 @@
+.topBar {
+    display: flex;
+    max-height: 15vh;
+    padding: 1.2rem;
+    gap: 1rem;
+}
+
+.siteName {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    box-sizing: border-box;
+    width: calc(250px - 1.2rem - 1rem);
+}
+
+.siteName > img {
+    height: 2.5rem;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.siteName > span {
+    font-family: 'PixelifySans';
+    line-height: .8rem;
+    font-weight: 700;
+    user-select: none;
+}

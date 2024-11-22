@@ -13,6 +13,11 @@
     gap: .5rem;
     justify-content: space-between;
     align-items: center;
+    background-color: #FFF;
+}
+
+.miniplayer.desktop {
+    height: 3rem;
 }
 
 .miniplayer > .mainInfo {
@@ -28,6 +33,10 @@
     border-radius: 10px;
 }
 
+.miniplayer > .mainInfo.desktop img {
+    height: 3rem;
+}
+
 .miniplayer .textInfo {
     display: flex;
     flex-direction: column;
@@ -37,13 +46,25 @@
     line-height: 15px;
 }
 
+.miniplayer.desktop .textInfo {
+    gap: 0;
+}
+
 .miniplayer .songTitle {
     font-size: 1rem;
     font-weight: 700;
 }
 
+.miniplayer.desktop .songTitle {
+    font-size: .85rem;
+}
+
 .miniplayer .songArtists {
     font-size: .8rem;
+}
+
+.miniplayer.desktop .songArtists {
+    font-size: .65rem;
 }
 
 .miniplayer > button {
@@ -73,4 +94,64 @@
 
 .progressbar[value]::-webkit-progress-value {
     background-color: #F2501D;
+}
+
+/* Desktop Specific */
+.miniplayerButtons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.miniplayerButtons > button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: none;
+    transition: opacity .1s ease;
+    cursor: pointer;
+}
+
+.miniplayerButtons > button:disabled {
+    cursor: default;
+}
+
+.miniplayerButtons > button:is(.miniPreviousButton, .miniNextButton) {
+    width: calc(0.6 * 32px);
+    height: calc(0.6 * 32px);
+}
+
+.miniplayerButtons img {
+    height: 100%;
+}
+
+.miniplayerButtons > button:is(:active, :disabled) {
+    opacity: .5;
+}
+
+.slideDiv {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+    max-width: 34vw;
+}
+
+.slideDiv span {
+    font-size: .75rem;
+}
+
+.soundDiv {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    min-width: 115px;
+}
+
+button.miniButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
 }

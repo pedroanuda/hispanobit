@@ -1,0 +1,104 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 45px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    background-color: white;
+}
+
+.slideDiv {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    gap: .5rem;
+}
+
+.slideDiv > span {
+    min-width: 3rem;
+}
+
+.slideDiv > span:first-of-type {
+    text-align: right;
+}
+
+.controlsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mainControls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mainControls > button {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background: none;
+    transition: opacity .1s ease;
+    cursor: pointer;
+}
+
+.mainControls > button:disabled {
+    cursor: default;
+}
+
+.mainControls > button:is(.miniPreviousButton, .miniNextButton) {
+    width: calc(0.6 * 48px);
+    height: calc(0.6 * 48px);
+}
+
+.mainControls img {
+    height: 100%;
+}
+
+.mainControls > button:is(:active, :disabled) {
+    opacity: .5;
+}
+
+.rightControls {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+.soundDiv {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    min-width: 115px;
+}
+
+button.miniButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.songInfo {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.songInfo > img {
+    height: 100px;
+    border-radius: 10px;
+}
+
+.songInfo h4 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+}

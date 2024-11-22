@@ -20,12 +20,16 @@ export default function SongContextProvider({ children }) {
     const [playing, setPlaying] = React.useState(false);
     const [songUrl, setSongUrl] = React.useState(null);
     const [onEndedEvent, setEndedEvent] = React.useState(() => setPlaying(false));
+    const [currentVolume, setCurrentVolume] = React.useState(null);
     const audioRef = React.useRef();
 
     const handleLoadedMetaData = () => {
         setCurrentTime(0);
         setDuration(audioRef.current.duration);
-        audioRef.current.volume = .25;
+        if (currentVolume === null) {
+            audioRef.current.volume = .25;
+            setCurrentVolume(.25);
+        }
         if (playing) audioRef.current.play();
     }
 
@@ -39,7 +43,7 @@ export default function SongContextProvider({ children }) {
             currentTime, setCurrentTime, songUrl, setSongUrl,
             name, setName, artists, setArtists, 
             albumImage, setAlbumImage, onEndedEvent,
-            setEndedEvent, audioRef
+            setEndedEvent, audioRef, currentVolume, setCurrentVolume
         }}>
             {children}
             <audio onLoadedMetadata={handleLoadedMetaData} onTimeUpdate={handleTimeUpdate}
@@ -53,7 +57,8 @@ export function useSongContext() {
         playing, setPlaying, duration,
         currentTime, setCurrentTime, songUrl, setSongUrl,
         name, setName, artists, setArtists,
-        albumImage, setAlbumImage, setEndedEvent, audioRef
+        albumImage, setAlbumImage, setEndedEvent, audioRef,
+        currentVolume, setCurrentVolume
     } = React.useContext(SongContext);
 
     const [loading, setLoading] = React.useState(false);
@@ -117,6 +122,19 @@ export function useSongContext() {
         audioRef.current.currentTime = time;
     }
 
+    /** Ajust o volume da música.
+     * @param {number} volume Volume desejado, considerando
+     * que 0 é o mais baixo, 0.5 é metade e 1 é o mais alto.
+     */
+    function setVolume(volume) {
+        audioRef.current.volume = volume;
+        setCurrentVolume(volume);
+    }
+
+    function isSongLoaded() {
+        return audioRef.current?.src !== "";
+    }
+
     return {
         name,
         song: {
@@ -126,6 +144,6 @@ export function useSongContext() {
         playing, loading, 
         playSongFromId, playSongFromObject,
         pauseSong, play, goTo, loadSongFromId: fetchData, loadSong,
-        setOnEnd: setEndedEvent
+        currentVolume, setVolume, setOnEnd: setEndedEvent, isSongLoaded
     };
 }
