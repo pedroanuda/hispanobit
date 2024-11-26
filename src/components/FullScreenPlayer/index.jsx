@@ -11,6 +11,7 @@ import {
     Voice,
     Decompress
  } from "icons";
+import LyricsDisplay from 'components/LyricsDisplay';
 
 /** Estilização do Slider. 
  * @type {import("@mui/material").SliderOwnProps} */
@@ -83,6 +84,7 @@ const FullScreenPlayer = React.forwardRef(({ style }, ref ) => {
 
     return (
     <div className={styles.container} style={style} ref={ref}>
+        <LyricsDisplay songName={song.name} />
         <div className={styles.songInfo}>
             <img src={song.albumImage} alt="" />
             <div>

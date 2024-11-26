@@ -1,0 +1,28 @@
+.box {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    cursor: pointer;
+
+    padding: .5rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.box:hover {
+    background-color: #fdfcfc;
+}
+
+.box > img {
+    border-radius: 5px;
+    height: 4.2rem;
+    width: 4.2rem;
+}
+
+.box > span {
+    user-select: none;
+}
+
+div:has(> .box) {
+    height: 100%;
+}

@@ -4,15 +4,27 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ComingSoonPage from './pages/ComingSoonPage';
 import QueueContextProvider from 'common/contexts/QueueContext';
 import SongContextProvider from 'common/contexts/SongContext';
-import HomePage from 'pages/HomePage';
+import AppLayout from 'pages/AppLayout';
 import "./fonts/PixelifySans.ttf"
 import './index.css'
 import FullScreenPlayer from 'components/FullScreenPlayer';
+import Artist from 'pages/Artist';
+import Home from 'pages/Home';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (<HomePage />)
+    element: (<AppLayout />),
+    children: [
+      {
+        index: true,
+        element: (<Home />)
+      },
+      {
+        path: 'artist/:artist',
+        element: (<Artist />)
+      }
+    ]
   },
   {
     path: "/test",

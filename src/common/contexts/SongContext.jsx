@@ -104,6 +104,7 @@ export function useSongContext() {
 
     /** Toca/Retoma a música. */
     function play() {
+        if (playing) return;
         audioRef.current.play();
         setPlaying(true);
     }
