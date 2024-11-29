@@ -14,11 +14,18 @@ import { Dots } from 'icons';
  * @param {number | null} songInfo.classification Classificação da música. Se não posta,
  * aparecerá sem classificação.
  */
-export default function SongBox({ id, name, duration, picture, classification }) {
+export default function SongBox({ id, name, picture, classification }) {
     const { addToQueueFromId } = useQueueContext();
-    const { playSongFromId } = useSongContext();
+    const { playSongFromId, getSongDuration } = useSongContext();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [duration, setDuration] = React.useState(0);
     const menuOpened = Boolean(anchorEl);
+
+    React.useEffect(() => {
+        getSongDuration(id, buffer => {
+            setDuration(buffer.duration);
+        })
+    }, [])
 
     const onKeyUpCallback = e => {
         if (e.keyCode == 13)
@@ -45,7 +52,7 @@ export default function SongBox({ id, name, duration, picture, classification })
             <span className={styles.songName}>{name}</span>
         </div>
         <div>
-            <span>{`${Math.floor(duration / 60)}:${(duration % 60).toString().padStart(2, "0")}`}</span>
+            <span>{`${Math.floor(duration / 60)}:${Math.floor(duration % 60).toString().padStart(2, "0")}`}</span>
             <button onClick={handleMenuClick} className={styles.buttonSt}>
                 <img src={Dots} alt="Menu" />
             </button>

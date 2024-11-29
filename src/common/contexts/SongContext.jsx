@@ -136,6 +136,19 @@ export function useSongContext() {
         return audioRef.current?.src !== "";
     }
 
+    async function getSongDuration(id, callback) {
+        let s = await (await fetch(`${api}/song?id=${id}`)).json();
+        const audioContext = new window.AudioContext();
+        
+        let request = new XMLHttpRequest();
+        request.responseType = 'arraybuffer';
+        request.open('GET', `${songsServer}/${s.source}`);
+        request.onload = () => {
+            audioContext.decodeAudioData(request.response, callback)
+        }
+        request.send();
+    }
+
     return {
         name,
         song: {
@@ -145,6 +158,7 @@ export function useSongContext() {
         playing, loading, 
         playSongFromId, playSongFromObject,
         pauseSong, play, goTo, loadSongFromId: fetchData, loadSong,
-        currentVolume, setVolume, setOnEnd: setEndedEvent, isSongLoaded
+        currentVolume, setVolume, setOnEnd: setEndedEvent, isSongLoaded,
+        getSongDuration
     };
 }

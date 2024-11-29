@@ -23,9 +23,9 @@ export default function Home() {
             <div className='horiz_div' style={{flex: 2}}>
                 <div className='divisao_cat'>
                     <h3 className='titulo_cat'>Popular</h3>
-                    {songs.map((song, i) => (
-                        <SongBox id={song.id} name={song.name} picture={song.image} duration={10} classification={i+1} key={i} />
-                    ))}
+                    {songs.map((song, i) => 
+                        <SongBox id={song.id} name={song.name} picture={song.image} classification={i+1} key={i} />
+                    )}
                 </div>
             </div>
             <div className='horiz_div' style={{flex: 1}}>
