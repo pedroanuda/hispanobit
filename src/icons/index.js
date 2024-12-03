@@ -7,7 +7,8 @@ import Search from "./search2.svg";
 import Voice from "./voice-icon.svg";
 import Decompress from "./decompress-icon.svg";
 import Dots from "./dots-icon.svg";
+import MusicIcon from "./music-icon.svg";
 
 export { Favorite, Next, Pause, Play, Previous, Search, Voice, Decompress,
-    Dots
+    Dots, MusicIcon
  }

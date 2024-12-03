@@ -29,15 +29,32 @@
     padding: 1rem;
 }
 
-.display::before {
-    content: "";
+.displayTitle {
     position: fixed;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
     top: 45px;
     left: 45px;
     right: 45px;
-    background: linear-gradient(180deg, rgb(238, 45, 77) 0%, rgba(217,217,217,0) 100%);
+    background: linear-gradient(180deg, rgb(238, 45, 77) 50%, rgba(217,217,217,0) 100%);
     border-radius: 10px 10px 0 0;
     height: 2.5rem;
+
+    display: flex;
+    align-items: flex;
+    justify-content: space-between;
+}
+.displayTitle > span {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.displayTitle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #FFF;
 }
 
 .display::after {
@@ -49,4 +66,10 @@
     border-radius: 0 0 10px 10px;
     background: linear-gradient(0, rgb(238, 45, 77) 0%, rgba(217,217,217,0) 100%);
     height: 2rem;
+}
+
+#hsLogo {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
 }
