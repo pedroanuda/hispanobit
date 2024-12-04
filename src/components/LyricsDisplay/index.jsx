@@ -11,6 +11,7 @@ export default function LyricsDisplay({ songName = "" }) {
     const [sName, setSName] = React.useState(false);
     const { song } = useSongContext();
     const ref = React.useRef();
+    let lastTime = 0;
 
     async function getLyrics () {
         if (songName === "") {
@@ -22,16 +23,23 @@ export default function LyricsDisplay({ songName = "" }) {
             const data = lrcParser(l);
             setLyrics(data.scripts);
             setSName(songName);
+            lastTime = 0;
         }
         catch (e)
         {
             setSName(false);
         }
+        
     }
     React.useEffect(() => {getLyrics()}, [songName]);
+    React.useEffect(() => {
+        if (document.fullscreenElement && lastTime == 0) {
+            ref.current.scrollTo(0, 0);
+        }
+    }, [document.fullscreenElement]);
 
     return (
-        <div className={styles.display} ref={ref} style={{display: !sName ? 'none' : 'flex'}}>
+        <div className={styles.display} ref={ref} style={{display: !sName ? 'none' : 'flex', '--special-color': song.accentColor}}>
             <div className={styles.displayTitle}>
                 <span>Letra 
                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="inherit">
@@ -42,6 +50,9 @@ export default function LyricsDisplay({ songName = "" }) {
             </div>
             {lyrics.map((line, i) => {
                 const isRead = song.currentTime >= line.start;
+
+                if (isRead)
+                    lastTime = line.start;
 
                 return (
                 <LyricSpan isRead={isRead} key={i} parentRef={ref} time={line.start}>

@@ -1,0 +1,47 @@
+.banner {
+    position: relative;
+    padding: 2rem;
+    background-color: #F2501D;
+    border-radius: 20px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.content {
+    color: #FFF;
+    max-width: 45%;
+}
+
+.content  h2 {
+    font-family: 'PixelifySans';
+    font-size: 2.8rem;
+    line-height: 3rem;
+}
+
+.content span {
+    font-size: .9rem;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-top: 3.2rem;
+}
+
+.buttons > button {
+    font-family: 'PixelifySans';
+    background-color: #FFFFFF50;
+    border-radius: 20px;
+    padding: .5rem;
+    border: none;
+    flex: 1;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+button.focused {
+    background-color: #FFF;
+
+}

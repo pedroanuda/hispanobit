@@ -3,7 +3,7 @@
 
     border-radius: 20px;
     background-color: #F5F5F5;
-    width: calc(100vw - var(--sidebar-size));
+    width: calc(100% - var(--sidebar-size));
     height: 85vh;
     box-sizing: border-box;
     margin-left: var(--sidebar-size);

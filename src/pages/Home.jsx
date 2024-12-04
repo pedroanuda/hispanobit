@@ -2,6 +2,7 @@ import { api, songsServer } from "config.json"
 import ArtistBox from "components/MainNavigation/ArtistBox";
 import SongBox from "components/SongBox";
 import React from "react";
+import MainBanner from "components/MainBanner";
 
 export default function Home() {
     const [songs, setSongs] = React.useState([]);
@@ -19,6 +20,8 @@ export default function Home() {
     }
 
     return (
+        <>
+        <MainBanner />
         <div style={{display: 'flex', gap: '1.5rem', padding: '1rem'}}>
             <div className='horiz_div' style={{flex: 2}}>
                 <div className='divisao_cat'>
@@ -40,5 +43,6 @@ export default function Home() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
