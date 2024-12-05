@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./LyricsDisplay.module.css"
 import { useSongContext } from 'common/contexts/SongContext';
 
-export default function LyricSpan({ children, isRead, parentRef, time }) {
+export default function LyricSpan({ children, isRead, parentRef, time, notEvident }) {
     const spanRef = React.useRef();
     const { goTo } = useSongContext();
 
@@ -20,7 +20,7 @@ export default function LyricSpan({ children, isRead, parentRef, time }) {
     }, [isRead])
 
     return (
-        <span className={(isRead ? styles.read : "") + (typeof children == 'string' && children.trim() == "" 
+        <span className={(isRead || notEvident ? styles.read : "") + (typeof children == 'string' && children.trim() == "" 
         ? ' ' + styles.empty : "")} ref={spanRef} onClick={() => {goTo(time); adjustScroll()}}>
             {children}
         </span>

@@ -7,11 +7,10 @@
     border-radius: 10px;
     position: relative;
 
-    flex: 1;
+    flex: 2;
     display: flex;
     flex-direction: column;
     gap: .8rem;
-    margin-bottom: 2rem;
 }
 
 .display > span {
@@ -37,7 +36,7 @@
     padding: 1rem 1.5rem;
     top: 45px;
     left: 45px;
-    right: 45px;
+    right: calc(100% / 3 + .68rem);
     background: linear-gradient(180deg, var(--special-color) 50%, rgba(217,217,217,0) 100%);
     border-radius: 10px 10px 0 0;
     height: 2.5rem;
@@ -62,7 +61,7 @@
     content: "";
     position: fixed;
     left: 45px;
-    right: 45px;
+    right: calc(100% / 3 + .68rem);
     bottom: 17.5rem;
     border-radius: 0 0 10px 10px;
     background: linear-gradient(0, var(--special-color) 0%, rgba(217,217,217,0) 100%);

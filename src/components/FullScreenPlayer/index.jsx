@@ -12,6 +12,7 @@ import {
     Decompress
  } from "icons";
 import LyricsDisplay from 'components/LyricsDisplay';
+import PlayerArtistCard from './PlayerArtistCard';
 
 /** Estilização do Slider. 
  * @type {import("@mui/material").SliderOwnProps} */
@@ -84,7 +85,17 @@ const FullScreenPlayer = React.forwardRef(({ style }, ref ) => {
 
     return (
     <div className={styles.container} style={style} ref={ref}>
-        <LyricsDisplay songName={song.name} />
+        <div style={{display: "flex", gap: '1rem', marginBottom: '2rem', overflow: 'hidden'}}>
+            <LyricsDisplay songName={song.name} />
+            <div className={styles.artistsSection}>
+                <h3>{song.artists.length > 1 ? "Artistas" : "Artista"}</h3>
+                <div>
+                    {song.artists.map((artist, i)  => (
+                        <PlayerArtistCard artistName={artist} key={i} />
+                    ))}
+                </div>
+            </div>
+        </div>
         <div className={styles.songInfo}>
             <img src={song.albumImage} alt="" />
             <div>

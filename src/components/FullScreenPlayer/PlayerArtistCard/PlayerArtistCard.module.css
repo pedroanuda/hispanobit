@@ -1,0 +1,26 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.card > img {
+    max-width: 10rem;
+    max-height: 10rem;
+    border-radius: 50%;
+    margin-bottom: .75rem;
+}
+
+.card > img#flag {
+    position: absolute;
+    width: 3rem;
+    top: calc(10rem - 3rem);
+    left: 5px;
+}
+
+.card > span#artist_name {
+    font-weight: bold;
+    line-height: 1.1rem;
+}

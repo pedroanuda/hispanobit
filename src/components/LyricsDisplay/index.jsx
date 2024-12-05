@@ -55,7 +55,7 @@ export default function LyricsDisplay({ songName = "" }) {
                     lastTime = line.start;
 
                 return (
-                <LyricSpan isRead={isRead} key={i} parentRef={ref} time={line.start}>
+                <LyricSpan isRead={isRead} key={i} parentRef={ref} time={line.start} notEvident={!song.evidentLyrics}>
                     {line.text}
                 </LyricSpan>
             )})}

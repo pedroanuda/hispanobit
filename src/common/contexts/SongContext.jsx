@@ -22,6 +22,7 @@ export default function SongContextProvider({ children }) {
     const [onEndedEvent, setEndedEvent] = React.useState(() => setPlaying(false));
     const [currentVolume, setCurrentVolume] = React.useState(null);
     const [accentColor, setAccentColor] = React.useState();
+    const [evidentLyrics, setEvidentLyrics] = React.useState();
     const audioRef = React.useRef();
 
     const handleLoadedMetaData = () => {
@@ -45,7 +46,7 @@ export default function SongContextProvider({ children }) {
             name, setName, artists, setArtists, 
             albumImage, setAlbumImage, onEndedEvent,
             setEndedEvent, audioRef, currentVolume, setCurrentVolume,
-            accentColor, setAccentColor
+            accentColor, setAccentColor, evidentLyrics, setEvidentLyrics
         }}>
             {children}
             <audio onLoadedMetadata={handleLoadedMetaData} onTimeUpdate={handleTimeUpdate}
@@ -60,7 +61,8 @@ export function useSongContext() {
         currentTime, setCurrentTime, songUrl, setSongUrl,
         name, setName, artists, setArtists,
         albumImage, setAlbumImage, setEndedEvent, audioRef,
-        currentVolume, setCurrentVolume, accentColor, setAccentColor
+        currentVolume, setCurrentVolume, accentColor, setAccentColor,
+        evidentLyrics, setEvidentLyrics
     } = React.useContext(SongContext);
 
     const [loading, setLoading] = React.useState(false);
@@ -94,6 +96,7 @@ export function useSongContext() {
         setArtists(song.artists);
         setAlbumImage(song.image);
         setAccentColor(song.accentColor);
+        setEvidentLyrics(song.evidentLyrics);
         console.log("loading");
     }
 
@@ -156,7 +159,7 @@ export function useSongContext() {
         name,
         song: {
             name, artists, duration, currentTime,
-            songUrl, albumImage, accentColor
+            songUrl, albumImage, accentColor, evidentLyrics
         }, 
         playing, loading, 
         playSongFromId, playSongFromObject,

@@ -102,3 +102,23 @@ button.miniButton {
     font-size: 2rem;
     line-height: 2.2rem;
 }
+
+.artistsSection {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.artistsSection > h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.artistsSection > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
